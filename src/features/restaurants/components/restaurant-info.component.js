@@ -19,14 +19,14 @@ import {
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = "Some Restaurant",
+    name = "Kaaylab Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+      "https://images.pexels.com/photos/1055058/pexels-photo-1055058.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     ],
-    address = "100 some random street",
+    address = "Sanepa, Lalitpur",
     isOpenNow = true,
-    rating = 4,
+    rating = 4.5,
     isClosedTemporarily = true,
   } = restaurant;
 
