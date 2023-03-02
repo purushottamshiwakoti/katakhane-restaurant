@@ -1,7 +1,7 @@
 import { StyleSheet, StatusBar } from "react-native";
 
 import { ThemeProvider } from "styled-components/native";
-import { RestaurantsScreen } from "./src/features/restaurant/screens/restaurants.screen";
+import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
 
 import { theme } from "./src/infrastructure/theme/";
 

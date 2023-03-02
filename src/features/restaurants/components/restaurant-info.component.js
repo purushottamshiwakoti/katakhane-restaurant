@@ -1,40 +1,62 @@
 import React from "react";
-import { Card } from "react-native-paper";
+import { SvgXml } from "react-native-svg";
 
-import styled from "styled-components/native";
+import { Spacer } from "../../../components/spacer/spacer.components";
+import { Text } from "../../../components/typography/text.component";
+import star from "../../../../assets/star";
+import open from "../../../../assets/open";
 
-const Title = styled.Text`
-  padding: 16px;
-  padding-top: 5;
-  color: ${(props) => props.theme.colors.ui.primary};
-`;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  SectionEnd,
+  Rating,
+  Icon,
+  Address,
+} from "./restaurant-info-card.styles";
 
-const RestaurantCard = styled(Card)`
-  background-color: white;
-  margin: 5px;
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: 10px;
-  background-color: white;
-`;
-
-export const RestaurantInfo = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = "Rajesh dai ko coffee pasal",
-    address = "bato side ko rukh muni",
-    rating = 4,
+    name = "Some Restaurant",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
-      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
-    icon,
-    openingHours = true,
-    isClosedTemporarily,
+    address = "100 some random street",
+    isOpenNow = true,
+    rating = 4,
+    isClosedTemporarily = true,
   } = restaurant;
+
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
+
   return (
-    <RestaurantCard>
-      <RestaurantCardCover source={{ uri: photos[0] }} />
-      <Title>{name}</Title>
+    <RestaurantCard elevation={5}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <Info>
+        <Text variant="label">{name}</Text>
+        <Section>
+          <Rating>
+            {ratingArray.map(() => (
+              <SvgXml xml={star} width={20} height={20} />
+            ))}
+          </Rating>
+          <SectionEnd>
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            )}
+            <Spacer position="left" size="large">
+              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Icon source={{ uri: icon }} />
+            </Spacer>
+          </SectionEnd>
+        </Section>
+        <Address>{address}</Address>
+      </Info>
     </RestaurantCard>
   );
 };
